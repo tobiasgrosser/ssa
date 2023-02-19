@@ -1,23 +1,13 @@
 inductive Kind where
 | k_a : Kind
-| k_b : Kind
-| k_c : Kind 
-| k_d : Kind
-| k_e : Kind
-| k_f : Kind
 
 @[reducible]
 def Kind.eval: Kind -> Type
 | .k_a => Int
-| .k_b => Int
-| .k_c => Int
-| .k_d => Int
-| .k_e => Int
-| .k_f => Int
 
 structure Val where
   kind: Kind
-  val: kind.eval
+  val: Int
 
 inductive Op where
 | op (name : String) (argval : List Val)
@@ -31,6 +21,7 @@ def sem: (o: Op) → Val
 | .op "f" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
 | .op "g" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
 | .op "h" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
+| .op "i" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
 | _ => ⟨.k_a, 0⟩
 
 theorem Fail: sem (.op "x" [⟨.k_a, 0⟩]) = output  := by {
