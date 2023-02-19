@@ -6,25 +6,24 @@ def Kind.eval: Kind -> Type
 | .k_a => Int
 
 structure Val where
-  kind: Kind
   val: Int
 
 inductive Op where
 | op (name : String) (argval : List Val)
 
 def sem: (o: Op) → Val
-| .op "a" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "b" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "c" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "d" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "e" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "f" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "g" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "h" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| .op "i" [⟨.k_a, _⟩] => ⟨.k_a, 0⟩
-| _ => ⟨.k_a, 0⟩
+| .op "a" [⟨_⟩] => ⟨0⟩
+| .op "b" [⟨_⟩] => ⟨0⟩
+| .op "c" [⟨_⟩] => ⟨0⟩
+| .op "d" [⟨_⟩] => ⟨0⟩
+| .op "e" [⟨_⟩] => ⟨0⟩
+| .op "f" [⟨_⟩] => ⟨0⟩
+| .op "g" [⟨_⟩] => ⟨0⟩
+| .op "h" [⟨_⟩] => ⟨0⟩
+| .op "i" [⟨_⟩] => ⟨0⟩
+| _ => ⟨0⟩
 
-theorem Fail: sem (.op "x" [⟨.k_a, 0⟩]) = output  := by {
+theorem Fail: sem (.op "x" [⟨0⟩]) = output  := by {
   -- tactic 'simp' failed, nested error:
   -- (deterministic) timeout at 'whnf', maximum number of heartbeats (200000) has been reached (use 'set_option maxHeartbeats <num>' to set the limit)
   simp only[sem];
