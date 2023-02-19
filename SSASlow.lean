@@ -1,27 +1,23 @@
 inductive Kind where
 | k_a : Kind
 
-@[reducible]
-def Kind.eval: Kind -> Type
-| .k_a => Int
-
 structure Val where
   val: Int
 
 inductive Op where
 | op (name : String) (argval : Val)
 
-def sem: (o: Op) → Val
-| .op "a" ⟨_⟩ => ⟨0⟩
-| .op "b" ⟨_⟩ => ⟨0⟩
-| .op "c" ⟨_⟩ => ⟨0⟩
-| .op "d" ⟨_⟩ => ⟨0⟩
-| .op "e" ⟨_⟩ => ⟨0⟩
-| .op "f" ⟨_⟩ => ⟨0⟩
-| .op "g" ⟨_⟩ => ⟨0⟩
-| .op "h" ⟨_⟩ => ⟨0⟩
-| .op "i" ⟨_⟩ => ⟨0⟩
-| _ => ⟨0⟩
+def sem: (o: Op) → Unit
+| .op "a" ⟨_⟩ => ()
+| .op "b" ⟨_⟩ => ()
+| .op "c" ⟨_⟩ => ()
+| .op "d" ⟨_⟩ => ()
+| .op "e" ⟨_⟩ => ()
+| .op "f" ⟨_⟩ => ()
+| .op "g" ⟨_⟩ => ()
+| .op "h" ⟨_⟩ => ()
+| .op "i" ⟨_⟩ => ()
+| _ => ()
 
 theorem Fail: sem (.op "x" ⟨0⟩) = output  := by {
   -- tactic 'simp' failed, nested error:
