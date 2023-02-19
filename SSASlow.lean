@@ -14,13 +14,9 @@ def sem: (o: Op) → Unit
 | _ => ()
 
 theorem Fail: sem (.op "x") = output  := by {
-  -- tactic 'simp' failed, nested error:
-  -- (deterministic) timeout at 'whnf', maximum number of heartbeats (200000) has been reached (use 'set_option maxHeartbeats <num>' to set the limit)
+  -- failed to generate equality theorems for `match` expression `sem.match_1`
   simp only[sem];
 }
 
--- The timeout disappears with the following changes
--- x Change 'Int' to 'Unit'
+-- The failure disappears with the following changes
 -- x remove '.op "i"' case
--- x remove name from Op
--- x remove 'reducible'
