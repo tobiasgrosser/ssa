@@ -2,7 +2,7 @@ inductive Kind where
 | k_a : Kind
 
 inductive Op where
-| op (name : String) (argval : Int)
+| op (name : String) (argval : Unit)
 
 def sem: (o: Op) → Unit
 | .op "a" _ => ()
@@ -16,7 +16,7 @@ def sem: (o: Op) → Unit
 | .op "i" _ => ()
 | _ => ()
 
-theorem Fail: sem (.op "x" 0) = output  := by {
+theorem Fail: sem (.op "x" ()) = output  := by {
   -- tactic 'simp' failed, nested error:
   -- (deterministic) timeout at 'whnf', maximum number of heartbeats (200000) has been reached (use 'set_option maxHeartbeats <num>' to set the limit)
   simp only[sem];
